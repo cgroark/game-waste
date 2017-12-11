@@ -1,0 +1,25 @@
+body{
+	text-align: center;
+	background-image: url("img/landscape-3.jpg");
+	background-size: cover;
+}
+ .col-sm-4{
+ 	height: 220px;
+ }
+
+#compost-img,
+#recycle-img{
+	padding-top: 50px;
+	width: 200px;
+	height: auto;
+}
+
+#trash-img,
+#other-img{
+	width: 200px;
+	height: auto;
+}
+
+.col-sm-2{
+
+}
