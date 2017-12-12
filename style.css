@@ -4,48 +4,60 @@ body{
 /*	background-image: url("img/landscape-3.jpg");
 */	background-size: cover;
 }
- .col-sm-4{
- 	height: 220px;
+.container-top{
+	height: 150px;
+}
+
+.score-section{
+}
+
+#score, 
+#high-score{
+	display: inline-block;
+}
+
+ .container{
+ 	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
  }
 
-#compost-img,
-#recycle-img{
-	padding-top: 50px;
-	width: 200px;
-	height: auto;
-	z-index: -1;
+.sorting-div{
+	display: inline-block;
+	padding-top: 130px;
+	background-size: 100% 100%;
+	width: 210px;
+	height: 150px;
+	margin: 20px 20px;
 }
 
-#trash-img,
-#other-img{
-	width: 200px;
-	height: auto;
-	z-index: -1;
+#compost-div{
+	background-image: url(img/compost-bin.png);
 }
 
+#recycle-div{
+	background-image: url(img/recycle-bin.png);
+}
+
+#trash-div{
+	background-image: url(img/bin.png);
+}
+#other-div{
+	background-image: url("img/alien-recycle.png");
+}
 .newClass{
-	border: solid 10px pink;
-}
+/*	border: solid 10px pink;
+*/}
 
-#image-to-sort{
+.image-to-sort{
 	width: auto;
 	height: 130px;
 	z-index: 9;
 }
-
 
 .test{
 	height: 150px;
 	width: 150px;
 	background-color: blue;
 	z-index: 1;
-}
-
-
-}
-
-
-
-.col-sm-2{
-
 }

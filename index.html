@@ -7,92 +7,38 @@
 	<title>Sort It</title>
 </head>
 <body>
-	<ul class="nav nav-tabs">
-  		<li class="nav-item">
-    		<a class="nav-link active" href="#">Resources</a>
-  		</li>
-  		<li class="nav-item">
-    		<a class="nav-link" href="#">About</a>
-  		</li>
-	</ul>
 	<h1 id="title">Where Does It Go?</h1>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-			</div>
-			<div id="main-image-div" class="col-sm-4">
-				<div id="draggable"><img id="image-to-sort"></div>
-			</div>	 
-			</div>
-			<h2 id="item-title"></h2>
-			</div>
-			<div class="col-sm-4">
-		</div>
-	<div class="test" id="droppable">
-			<p>testing</p>
-		</div>
 	
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-1">
+	<div class="container-top">
+		<div id="main-image-div">
+			<img class="image-to-sort" id="draggable">
 			</div>
-			<div class="col-sm-10">
-				<div class="col-sm-2">
-					<div id="droppable"><img id="recycle-img" src="img/recycle-bin.png"></div>
-				</div>
-				<div class="col-sm-1">
-				</div>
-				<div class="col-sm-2" id="droppable">
-					<img id="compost-img" src="img/compost-bin.png">
-				</div>
-				<div class="col-sm-1">
-				</div>
-				<div class="col-sm-2" id="droppable">
-					<img id="trash-img" src="img/bin.png">
-				</div>
-				<div class="col-sm-1">
-				</div>
-				<div class="col-sm-2" id="droppable">
-					<img id="other-img" src="#">
-				</div>
-				<div class="col-sm-1">
-				</div>
-			</div>
-			<div class="col-sm-1">
-			</div>
-		</div>
-		
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-1">
-			</div>
-			<div class="col-sm-10">
-				<div class="col-sm-2">
-					<h2>Reyclables</h2>
-				</div>
-				<div class="col-sm-1">
-				</div>
-				<div class="col-sm-2">
-					<h2>Compostables</h2>
-				</div>
-				<div class="col-sm-1">
-				</div>
-				<div class="col-sm-2">
-					<h2>Landfill</h2>				
-				</div>
-				<div class="col-sm-1">
-				</div>
-				<div class="col-sm-2">
-					<h2>Other</h2>
-				</div>
-				<div class="col-sm-1">
-				</div>
-			</div>
-			<div class="col-sm-1">
-			</div>
-		</div>
+		</div>	 
 	</div>
 
+	<div class="container">
+		<div class="sorting-div" id="recycle-div">
+			<h1 id="droppable1">Recyclables</h1>
+		</div>
+		<div class="sorting-div" id="compost-div">
+			<h1 id="droppable2">Compostables</h1>
+		</div>
+		<div class="sorting-div" id="trash-div">
+			<h1 id="droppable3">Landfill</h1>
+		</div>
+		<div class="sorting-div" id="other-div">
+			<h1 id="droppable4">Other</h1>
+		</div>
+	</div>
+	<div class="score-section">
+		<div>
+			<h3 id="score">Your Score:</h3>
+		</div>
+		<div>
+			<h3 id="high-score">High Score:</h3>
+		</div>
+	</div>
+	
 	<div class="other-items">
 		<div id="transfer-station">
 			<img src="#">

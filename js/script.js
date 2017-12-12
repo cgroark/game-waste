@@ -2,89 +2,135 @@ var compostImage = $("#compost-img");
 var recycleImage = $("#recycle-img");
 var trashImage = $("#trash-img");
 var otherImage = $("#other-img");
-var sortingImage = $("#image-to-sort");
+var sortingImage = $(".image-to-sort");
 var sortingTitle = $("#item-title");
 
-var itemsRecycle = ["beer.png", "bottle2.png", "can.png", "milk.png", "paperbag.jpg"];
+var randomImage = [];
+var itemsRecycle = ["box.png", "beer.png", "bottle2.png", "can.png", "milk.png"];
 var itemsCompost = ["applecore.png", "banana.png", "cheese.png", "eggs.png", "fish.png", "leaves.png", "pizzabox.png"];
-var itemsTrash = ["foam.jpg", "juicebox.png", "spoon.png", "wrapper.png"];
+var itemsTrash = ["juicebox.png", "foam.png", "spoon.png", "wrapper.png"];
+var itemsOther = ["bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
 var itemsTransfer = ["bike.png"];
 var itemsHHW = ["hypodermic.png"];
 var itemsThread = [];
 var itemsEwaste = ["iphone.png", "laptop.png", "tv.png"];
 var basePath = "img/";
-var allImages = ["applecore.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "foam.jpg", "hypodermic.png", "iphone.png", "juicebox.png", "laptop.png", "leaves.png", "milk.png", "paperbag.jpg", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
+var allImages = ["applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png", "juicebox.png", "laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
 score = 0;
 
 console.log("HELLOOOO");
 
 function onLoad(){
 	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
+	randomImage.push(randImg);
 	var imageSrc = basePath+randImg;
 	sortingImage.attr("src", imageSrc);
 	allImages.splice(randImg, 1);//this isn't working, fix later
-
-	$(function(){
-    $("#draggable").draggable();
-    $("#droppable").droppable({
-      drop: function(){
-      	$(this).toggleClass("newClass");
-      	if(itemsCompost.includes(randImg)){
-      		console.log("in it");
-      		(draggable).remove();
-      		score++
-
-      	}else{
-      		console.log("not");
-      		(draggable).remove();
-      		$("#main-image-div").append($("<img>", {id:"image-to-sort", src: basePath+randImg}));
-      	}
-      }
-    });
-  });
 }
 
-// $(function(){
-//     $("#draggable").draggable();
-//     $("#droppable").droppable({
-
-// $(".test").on("dragover", function(event){
-//     event.preventDefault();  
-//     event.stopPropagation();
-//     $(this).toggleClass("newClass");
-// })})
-
+function newImage(){
+	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
+	randomImage.push(randImg);
+	var imageSrc = basePath+randImg;
+	sortingImage.attr("src", imageSrc);
+}
 
 $(function(){
     $("#draggable").draggable();
-    $("#droppable").droppable({
+    $("#droppable1").droppable({
       drop: function(){
       	$(this).toggleClass("newClass");
-      	console.log(draggable).attr("src")
-      	if(itemsCompost.indexOf(basePath+draggable)!= -1){
+      	if(itemsRecycle.includes(randomImage[0])){
       		console.log("in it");
-b
+      		(draggable).remove();
+      		randomImage.splice(0,1);
+      		score++
+      		$("#score").append(" "+score);
+      		newImage();
       	}else{
       		console.log("not");
-      		$(draggable).remove();
+      		(draggable).remove();
+      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
       	}
-        // $(this).css("border", "solid 5px red")
       }
     });
-  });
+});
 
-function divListener(){
-document.getElementsByClassName("test").addEventListener("drop", function(){
-      		console.log("dropppped")});
+$(function(){
+    $("#draggable").draggable();
+    $("#droppable2").droppable({
+      drop: function(){
+      	$(this).toggleClass("newClass");
+      	if(itemsCompost.includes(randomImage[0])){
+      		console.log("in it");
+      		(draggable).remove();
+      		randomImage.splice(0,1);
+      		score++
+      		$("#score").append(" "+score);
+      		newImage();
+
+      	}else{
+      		console.log("not");
+      		(draggable).remove();
+      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      	}
+      }
+    });
+});
+
+$(function(){
+    $("#draggable").draggable();
+    $("#droppable3").droppable({
+      drop: function(){
+      	$(this).toggleClass("newClass");
+      	if(itemsTrash.includes(randomImage[0])){
+      		console.log("in it");
+      		(draggable).remove();
+      		randomImage.splice(0,1);
+      		score++
+      		$("#score").append(" "+score);
+      		newImage();
+
+      	}else{
+      		console.log("not");
+      		(draggable).remove();
+      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      	}
+      }
+    });
+});
+
+$(function(){
+    $("#draggable").draggable();
+    $("#droppable4").droppable({
+      drop: function(){
+      	$(this).toggleClass("newClass");
+      	if(itemsOther.includes(randomImage[0])){
+      		console.log("in it");
+      		(draggable).remove();
+      		randomImage.splice(0,1);
+      		score++
+      		$("#score").append(" "+score);
+      		newImage();
+
+      	}else{
+      		console.log("not");
+      		(draggable).remove();
+      		$("#other-div").effect("shake",{times:4},300);
+      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      	}
+      }
+    });
+});
+
+function newImage(){
+	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
+	randomImage.push(randImg);
+	var imageSrc = basePath+randImg;
+	sortingImage.attr("src", imageSrc);
+	$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+	allImages.splice(randImg, 1);//this isn't working, fix later
 }
-
-	// if(arrayinQuestion.includes(randImg) ){
-	// 	console.log("nice job");
-	// 	count++;s
-	// 	 $(draggable).remove();
-	// 	onLoad();
-	// }else if(arrayinQuestion.indexOf(randimg))
-
 //if dropped item is in array of dropped area, score++; dissapear current image; create another image; 
 	//else if image is not in array, move image back to top 
 
