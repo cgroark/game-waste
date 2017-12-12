@@ -12,13 +12,38 @@ body{
 	padding-top: 50px;
 	width: 200px;
 	height: auto;
+	z-index: -1;
 }
 
 #trash-img,
 #other-img{
 	width: 200px;
 	height: auto;
+	z-index: -1;
 }
+
+.newClass{
+	border: solid 10px pink;
+}
+
+#image-to-sort{
+	width: auto;
+	height: 130px;
+	z-index: 9;
+}
+
+
+.test{
+	height: 150px;
+	width: 150px;
+	background-color: blue;
+	z-index: 1;
+}
+
+
+}
+
+
 
 .col-sm-2{
 
