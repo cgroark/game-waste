@@ -2,7 +2,7 @@ var compostImage = $("#compost-img");
 var recycleImage = $("#recycle-img");
 var trashImage = $("#trash-img");
 var otherImage = $("#other-img");
-var sortingImage = $(".image-to-sort");
+var sortingImage = $("#draggable");
 var sortingTitle = $("#item-title");
 
 var randomImage = [];
@@ -42,15 +42,18 @@ $(function(){
       	$(this).toggleClass("newClass");
       	if(itemsRecycle.includes(randomImage[0])){
       		console.log("in it");
-      		(draggable).remove();
+      		$("#draggable").remove();
       		randomImage.splice(0,1);
       		score++
       		$("#score").append(" "+score);
-      		newImage();
+      		newImage();  
       	}else{
       		console.log("not");
-      		(draggable).remove();
-      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      		$("#draggable").remove();
+      		$(".recycle-div").effect("shake",{times:4},300);
+      		$("#main-image-div").append($("<img>", {id: "draggable", src: basePath+randomImage[0]}));
+      		$("#draggable").draggable();
+
       	}
       }
     });
@@ -63,7 +66,7 @@ $(function(){
       	$(this).toggleClass("newClass");
       	if(itemsCompost.includes(randomImage[0])){
       		console.log("in it");
-      		(draggable).remove();
+      		$("#draggable").remove();
       		randomImage.splice(0,1);
       		score++
       		$("#score").append(" "+score);
@@ -71,8 +74,11 @@ $(function(){
 
       	}else{
       		console.log("not");
-      		(draggable).remove();
-      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      		$("#draggable").remove();
+      		$(".compost-div").effect("shake",{times:4},300);
+      		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+      		$("#draggable").draggable();
+
       	}
       }
     });
@@ -85,7 +91,7 @@ $(function(){
       	$(this).toggleClass("newClass");
       	if(itemsTrash.includes(randomImage[0])){
       		console.log("in it");
-      		(draggable).remove();
+      		$("#draggable").remove();
       		randomImage.splice(0,1);
       		score++
       		$("#score").append(" "+score);
@@ -93,8 +99,12 @@ $(function(){
 
       	}else{
       		console.log("not");
-      		(draggable).remove();
-      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      		$("#draggable").remove();
+      		$(".trash-div").effect("shake",{times:4},300);
+      		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+      		$("#draggable").draggable();
+
+
       	}
       }
     });
@@ -107,17 +117,18 @@ $(function(){
       	$(this).toggleClass("newClass");
       	if(itemsOther.includes(randomImage[0])){
       		console.log("in it");
-      		(draggable).remove();
+      		$("#draggable").remove();
       		randomImage.splice(0,1);
       		score++
       		$("#score").append(" "+score);
       		newImage();
-
       	}else{
       		console.log("not");
-      		(draggable).remove();
-      		$("#other-div").effect("shake",{times:4},300);
-      		$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+      		$("#draggable").remove();
+      		$(".other-div").effect("shake",{times:4},300);
+      		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+      		$("#draggable").draggable();
+
       	}
       }
     });
@@ -127,24 +138,17 @@ function newImage(){
 	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
 	randomImage.push(randImg);
 	var imageSrc = basePath+randImg;
-	sortingImage.attr("src", imageSrc);
-	$("#main-image-div").append($("<img>", {class:"image-to-sort", src: basePath+randomImage[0]}));
+	$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+	$("#draggable").draggable();
 	allImages.splice(randImg, 1);//this isn't working, fix later
 }
 //if dropped item is in array of dropped area, score++; dissapear current image; create another image; 
 	//else if image is not in array, move image back to top 
 
 //appemd text to images
+//build in timer
+//fix score
 
 //remove image from allImages array once used by onLoad
 
-//hover function to increase image size of new image
-
-//drag and drop image function
-
-//function for matching new image with array or correct images
-
-	//could be indeOf with != or = -1
-
-//create pop-up for other section
 onLoad();

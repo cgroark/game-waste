@@ -31,25 +31,25 @@ body{
 	margin: 20px 20px;
 }
 
-#compost-div{
+.compost-div{
 	background-image: url(img/compost-bin.png);
 }
 
-#recycle-div{
+.recycle-div{
 	background-image: url(img/recycle-bin.png);
 }
 
-#trash-div{
+.trash-div{
 	background-image: url(img/bin.png);
 }
-#other-div{
+.other-div{
 	background-image: url("img/alien-recycle.png");
 }
 .newClass{
 /*	border: solid 10px pink;
 */}
 
-.image-to-sort{
+#draggable{
 	width: auto;
 	height: 130px;
 	z-index: 9;
