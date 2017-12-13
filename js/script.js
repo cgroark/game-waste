@@ -17,7 +17,7 @@ var basePath = "img/";
 var allImages = ["applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png", "juicebox.png", "laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
 var highscore = $("#high-score");
 score = 0;
-time =21;
+time =45;
 
 if(localStorage.highscore == undefined){
 	localStorage.highscore= 0;
@@ -27,31 +27,36 @@ function onLoad(){
 	$("#start-button").on("click", function(){
 	console.log("button clicked");
 	$("#intro").fadeOut("slow");
-	setImage()
 	var tick = function(){
-	time -= 1;
-	document.getElementById("timer").textContent = "Time Remaining: " +time;
-	if(time<6){
-	document.getElementById("timer").style.color = "red";
+		time -= 1;
+		document.getElementById("timer").textContent = "Time Remaining: " +time;
+		if(time<6){
+		document.getElementById("timer").style.color = "red";
+		}
+		if(time<=0){
+			clearInterval(interval);
+			gameOver();
+		}	
 	}
-	if(time<=0){
-		clearInterval(interval);
-		gameOver();
-	}
-}
-
-interval = setInterval(tick, 1000);
-
-	});
-}
-
+		interval = setInterval(tick, 1000);
+		setTimeout(setImage, 950)();
+	})
+};
 function setImage(){
 	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
 	randomImage.push(randImg);
 	var imageSrc = basePath+randImg;
 	sortingImage.attr("src", imageSrc);
-	allImages.splice(randImg, 1);//this isn't working, fix later
-}
+	
+if(randImg === "bike.png"){
+		$("#image-name").text("Bicycle");
+	}else if(randImg === "spoon.png"){
+		$("#image-name").text("Spoon");
+	}else if(randImg === "fish.png"){
+		$("#image-name").text("Rotten Fish");
+	}
+}	// allImages.splice(randImg, 1);//this isn't working, fix later
+
 $(function(){
     $("#draggable").draggable();
     $("#droppable1").droppable({
@@ -152,7 +157,6 @@ function newImage(){
 }
 function gameOver(){
 	console.log("no time");
-	$("#draggable").remove();
 	$("#final-score").text("Your Score: "+score);
 	if(score>10){
 		$("#end-message").text("You're a Master Sorter");
@@ -161,12 +165,13 @@ function gameOver(){
 	}else if(score<=5){
 		$("#end-message").text("Study Up");
 	}
+	$("#draggable").remove();
 	document.getElementById("game-over").style.display = "inline-block";
 	if(score >= localStorage.highscore){
 		localStorage.highscore = score;
 		$("#new-high-score").text("you got the high score!!");
 		document.getElementById("new-high-score").style.display = "inline-block";
-
+		$("#new-high-score").fadeOut(3000);
 	}
 	$("#high-score").text("High Score: " + localStorage.highscore);
 }
