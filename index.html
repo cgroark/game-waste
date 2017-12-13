@@ -2,13 +2,13 @@
 <html>
 <head>
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Sort It</title>
 </head>
 <body>
 	<h1 id="title">Where Does It Go?</h1>
-	
 	<div class="container-top">
 		<div id="main-image-div">
 			<img id="draggable">
@@ -32,12 +32,34 @@
 	</div>
 	<div class="score-section">
 		<div>
-<!-- 			<h3 id="score">Your Score:</h3>
- -->		</div>
-		<div>
-			<h3 id="high-score">High Score:</h3>
+			<h3 id="score"></h3>
 		</div>
+		<div>
+<!-- 			<h3 id="high-score">High Score:</h3>
+ -->		</div>
 	</div>
+	<div id="timer">
+		<h2></h2>
+	</div>
+
+	<div id="game-over">
+		<h1 id="thank-you">Thanks For Cleaning Up</h1>
+		<h2 id="final-score"></h2>
+		<h2 id="high-score"></h2>
+		<h1 id="end-message"></h1>
+		<button id="reset" onClick="window.location.reload()">Play Again</button>
+		<h2 id="resources"><a href="https://www.seattle.gov/util/MyServices/WhereDoesItGo/index.htm" target="_blank">Visit SPU's Website to Learn More</a></h2>
+		<h2 id="resources2"><a href="http://www.seattletilth.org/learn/mcsb" target="_blank">Learn About the Master Composter Program</a></h2>
+	</div>
+	<div id="new-high-score">
+		<h1></h1>
+	</div>
+
+	<div id="intro">
+		<h1 id="intro-text">Drag and Drop the Items to the Proper Bins</h1>
+		<button id="start-button">Start Sorting!</button>
+	</div>
+
 	
 	<div class="other-items">
 		<div id="transfer-station">

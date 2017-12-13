@@ -1,14 +1,83 @@
 body{
 	text-align: center;
-	background-color: salmon;
-/*	background-image: url("img/landscape-3.jpg");
-*/	background-size: cover;
+/*	background-color: salmon;
+*/	font-family: 'Montserrat', sans-serif;
+	background-image: url("img/background2.jpg");
+	background-size: cover;
+}
+
+#title{
+	font-size: 64px;
+	margin: 26px 0 36px 0;
 }
 .container-top{
 	height: 150px;
 }
 
-.score-section{
+#score{
+	font-size: 36px;
+	margin-top: 20px;
+}
+
+#start-button{
+	text-align: center;
+	height: 26px;
+	width: 300px;
+	margin-top: 30px;
+	font-size: 18px;
+}
+
+#intro-text{
+	padding-top: 230px;
+	font-size: 64px;
+
+}
+#intro{
+	display: inline-block;
+	background-color: rgba(247, 187, 158, .9);
+	position: absolute;
+	margin-top: -650px;
+	margin-left: -400px;
+	height: 750px;
+	width: 800px;
+}
+
+#game-over{
+	display: none;
+	background-color: rgba(247, 187, 158, .9);
+	position: absolute;
+	padding-top: 100px;
+	margin-top: -650px;
+	margin-left: -400px;
+	height: 700px;
+	width: 800px;
+	}
+
+#new-high-score{
+	display: none;
+	position: absolute;
+	padding-top: 100px;
+	margin-top: -550px;
+	margin-left: -400px;
+	height: 200px;
+	width: 800px;
+	font-size: 96px;
+	color: red;
+}
+
+
+#thank-you{
+	font-size: 54px;
+	letter-spacing: 3px;
+	font-weight: 500;
+}
+
+#reset{
+	text-align: center;
+	height: 26px;
+	width: 140px;
+	margin-top: 30px;
+
 }
 
 #score, 
@@ -16,7 +85,12 @@ body{
 	display: inline-block;
 }
 
- .container{
+#timer{
+/*	margin-top: 10px;
+*/	font-size: 36px;
+}
+
+.container{
  	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
@@ -51,7 +125,7 @@ body{
 
 #draggable{
 	width: auto;
-	height: 130px;
+	height: 160px;
 	z-index: 9;
 }
 
