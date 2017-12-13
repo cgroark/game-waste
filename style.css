@@ -1,7 +1,6 @@
 body{
 	text-align: center;
-/*	background-color: salmon;
-*/	font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	background-image: url("img/background2.jpg");
 	background-size: cover;
 }
@@ -11,14 +10,12 @@ body{
 	margin: 26px 0 36px 0;
 }
 .container-top{
-	height: 150px;
+	height: 190px;
 }
-
 #score{
 	font-size: 36px;
 	margin-top: 20px;
 }
-
 #start-button{
 	text-align: center;
 	height: 26px;
@@ -26,11 +23,9 @@ body{
 	margin-top: 30px;
 	font-size: 18px;
 }
-
 #intro-text{
 	padding-top: 230px;
 	font-size: 64px;
-
 }
 #intro{
 	display: inline-block;
@@ -41,7 +36,6 @@ body{
 	height: 750px;
 	width: 800px;
 }
-
 #game-over{
 	display: none;
 	background-color: rgba(247, 187, 158, .9);
@@ -51,8 +45,7 @@ body{
 	margin-left: -400px;
 	height: 750px;
 	width: 800px;
-	}
-
+}
 #new-high-score{
 	display: none;
 	position: absolute;
@@ -64,38 +57,29 @@ body{
 	font-size: 96px;
 	color: red;
 }
-
-
 #thank-you{
 	font-size: 54px;
 	letter-spacing: 3px;
 	font-weight: 500;
 }
-
 #reset{
 	text-align: center;
 	height: 26px;
 	width: 140px;
 	margin-top: 30px;
-
 }
-
 #score, 
 #high-score{
 	display: inline-block;
 }
-
 #timer{
-/*	margin-top: 10px;
-*/	font-size: 36px;
+	font-size: 36px;
 }
-
 .container{
  	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
  }
-
 .sorting-div{
 	display: inline-block;
 	padding-top: 130px;
@@ -104,34 +88,56 @@ body{
 	height: 150px;
 	margin: 20px 20px;
 }
-
 .compost-div{
 	background-image: url(img/compost-bin.png);
 }
-
 .recycle-div{
 	background-image: url(img/recycle-bin.png);
 }
-
 .trash-div{
 	background-image: url(img/bin.png);
 }
 .other-div{
 	background-image: url("img/alien-recycle.png");
 }
-.newClass{
-/*	border: solid 10px pink;
-*/}
-
 #draggable{
 	width: auto;
 	height: 160px;
+	margin-bottom: 20px;
 	z-index: 1;
+}
+.popup-div{
+	display: inline-block;
+	padding-top: 130px;
+	background-size: 100% 100%;
+	width: 150px;
+	height: 150px;
+	margin: 20px 20px;
+}
+.other-items{
+	position: absolute;
+	background-color: rgba(100, 100, 100, .7);
+	margin-top: -550px;
+	margin-left: -400px;
+	height: 300px;
+	width: 800px;
+	display: none;
 }
 
-.test{
-	height: 150px;
-	width: 150px;
-	background-color: blue;
-	z-index: 1;
+.transfer-div{
+	background-image: url("img/alien-recycle.png");
+
 }
+.thread-div{
+	background-image: url("img/alien-recycle.png");
+
+}
+.ecycle-div{
+	background-image: url("img/alien-recycle.png");
+
+}
+.hhw-div{
+	background-image: url("img/alien-recycle.png");
+
+}
+
