@@ -4,10 +4,9 @@ body{
 	background-image: url("img/background2.jpg");
 	background-size: cover;
 }
-
 #title{
 	font-size: 64px;
-	margin: 26px 0 36px 0;
+	margin: 26px 0 24px 0;
 }
 .container-top{
 	height: 190px;
@@ -24,10 +23,10 @@ body{
 	font-size: 18px;
 }
 #intro-text{
-	padding-top: 230px;
 	font-size: 64px;
 }
 #intro{
+	padding-top: 230px;
 	display: inline-block;
 	background-color: rgba(247, 187, 158, .9);
 	position: absolute;
@@ -40,8 +39,8 @@ body{
 	display: none;
 	background-color: rgba(247, 187, 158, .9);
 	position: absolute;
-	padding-top: 100px;
-	margin-top: -750px;
+	padding-top: 200px;
+	margin-top: -600px;
 	margin-left: -400px;
 	height: 750px;
 	width: 800px;
@@ -96,8 +95,6 @@ body{
 	height: 150px;
 	margin: 20px 20px;
 }
-
-
 .compost-div{
 	background-image: url(img/compost-bin.png);
 }
@@ -110,26 +107,12 @@ body{
 .other-div{
 	background-image: url("img/recycleCirlce.png");
 }
-.win-image-rec{
+
+
+.win-image{
 	display: none;
 	position: absolute;
-	margin-left: -80px;
-	margin-top: -200px;
-	height: 160px;
-	width: auto;
-}
-.win-image-comp{
-	display: none;
-	position: absolute;
-	margin-left: -80px;
-	margin-top: -200px;
-	height: 160px;
-	width: auto;
-}
-.win-image-trash{
-	display: none;
-	position: absolute;
-	margin-left: -80px;
+	margin-left: -95px;
 	margin-top: -200px;
 	height: 160px;
 	width: auto;
@@ -139,7 +122,6 @@ body{
 	height: 170px;
 	margin-bottom: 20px;
 	z-index: 4;
-
 }
 .popup-div{
 	display: inline-block;
@@ -173,6 +155,5 @@ body{
 }
 .hhw-div{
 	background-image: url("img/recycle-green.png");
-
 }
 

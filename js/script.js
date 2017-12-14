@@ -1,32 +1,28 @@
-var compostImage = $("#compost-img");
-var recycleImage = $("#recycle-img");
-var trashImage = $("#trash-img");
-var otherImage = $("#other-img");
 var sortingImage = $("#draggable");
 var sortingTitle = $("#item-title");
 var randomImage = [];
-var itemsRecycle = ["juicebox.png", "box.png", "beer.png", "bottle2.png", "can.png", "milk.png"];
+var itemsRecycle = ["coffee-cup.png", "box.png", "beer.png", "bottle2.png", "can.png", "milk.png"];
 var itemsCompost = ["applecore.png", "banana.png", "cheese.png", "eggs.png", "fish.png", "leaves.png", "pizzabox.png"];
-var itemsTrash = ["foam.png", "spoon.png", "wrapper.png"];
-var itemsOther = ["tshirt.png", "couch.png","mattress.png", "bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
+var itemsTrash = ["wineglass.png", "bottlecap.png", "toaster.png", "foam.png", "spoon.png", "wrapper.png"];
+var itemsOther = ["battery.png", "tshirt.png", "couch.png","mattress.png", "bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
 var itemsTransfer = ["couch.png", "bike.png", "mattress.png"];
-var itemsHHW = ["hypodermic.png"];
+var itemsHHW = ["battery.png", "hypodermic.png"];
 var itemsThread = ["tshirt.png"];
 var itemsEwaste = ["iphone.png", "laptop.png", "tv.png"];
 var basePath = "img/";
-var allImages = ["tshirt.png", "couch.png",  "mattress.png", "applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png", "juicebox.png", "laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
+var allImages = ["wineglass.png", "bottlecap.png", "coffee-cup.png","toaster.png", "battery.png", "tshirt.png", "couch.png",  "mattress.png", "applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png","laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
 var highscore = $("#high-score");
 score = 0;
-time =25;
+time =70;
 
-if(localStorage.highscore == 21){
+if(localStorage.highscore == 4){
 	localStorage.highscore= 0;
 }
-
 function onLoad(){
+  $("#intro").addClass("animated bounceInDown");
 	$("#start-button").on("click", function(){
 	console.log("button clicked");
-	$("#intro").fadeOut("slow");
+  $("#intro").addClass("animated bounceOutUp");
 	var tick = function(){
 		time -= 1;
 		$("#timer").text("Time Remaining: " +time);
@@ -39,17 +35,57 @@ function onLoad(){
 		}	
 	}
 		interval = setInterval(tick, 1000);
-		setTimeout(setImage, 700);
+		setTimeout(setImage, 900);
 	})
 };
 function setImage(){
 	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
 	randomImage.push(randImg);
 	var imageSrc = basePath+randImg;
+  sortingImage.addClass("animated fadeInDown");
 	sortingImage.attr("src", imageSrc);
   allImages.splice(allImages.indexOf(randImg), 1);
   setName();
 }
+
+function celebrateRec(){
+  console.log("celebrate");
+          $("#win-image-rec").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-rec").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 2000, function(){
+          });
+}
+function celebrateComp(){
+  console.log("celebrate");
+          $("#win-image-comp").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-comp").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 2000, function(){
+          });
+}
+function celebrateTrash(){
+  console.log("celebrate");
+          $("#win-image-trash").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-trash").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 2000, function(){
+          });
+}
+
+// .css("display", "none").height(160).width(auto);
 $(function(){
     $("#draggable").draggable();
     $("#droppable1").droppable({
@@ -57,22 +93,12 @@ $(function(){
         if(itemsRecycle.includes(randomImage[0])){
           console.log("in it");
           $("#draggable").remove();
+          $("#draggable").remove();
           $("#image-name").text("");
           randomImage.splice(0,1);
           score++
           $("#score").text("Your Score: "+score);
-          // $(".win-image-rec").css({
-          //   opacity: "0",
-          //   height: "160px",
-          //   width: "160px"
-          //   })
-          // $(".win-image-rec").animate({
-          //   opacity: 0.95,
-          //   height: "+50",
-          //   width: "+50"
-          // }, 300, function() {
-          // });
-          // $(".win-image-rec").fadeOut("slow");
+          celebrateRec();
           newImage();  
         }else{
           console.log("not");
@@ -96,7 +122,8 @@ $(function(){
       		randomImage.splice(0,1);
       		score++
       		$("#score").text("Your Score: "+score);
-      		newImage();
+      		celebrateComp();
+          newImage();
       	}else{
       		console.log("not");
       		$("#draggable").remove();
@@ -104,7 +131,6 @@ $(function(){
       		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
       		$("#draggable").draggable();
           setName();
-
       	}
       }
     });
@@ -121,6 +147,7 @@ $(function(){
       		score++
       		$("#score").text("Your Score: "+score);
       		newImage();
+          celebrateTrash();
       	}else{
       		console.log("not");
       		$("#draggable").remove();
@@ -128,7 +155,6 @@ $(function(){
       		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
       		$("#draggable").draggable();
           setName();
-
       	}
       }
     });
@@ -157,11 +183,8 @@ $(function(){
 });
 function otherSort(){
   console.log("other");
+  $(".other-items").addClass("animated fadeInLeft");
   $(".other-items").css("display", "inline-block");
-
-
-
-
 }
 $(function(){
     $("#draggable").draggable();
@@ -264,8 +287,6 @@ $(function(){
       }
     });
 });
-
-
 function newImage(){
 	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
 	randomImage.push(randImg);
@@ -276,24 +297,21 @@ function newImage(){
   allImages.splice(allImages.indexOf(randImg),1);
 }
 function gameOver(){
-  console.log("no time");
   $(".other-items").css("display", "none");
-
+  $("#timer").remove();
+  $("#main-image-div").remove();
   $("#final-score").text("Your Score: "+score);
   if(score>10){
     $("#end-message").text("You're a Master Sorter");
-  }else if(score<=10){
+  }else if(score<=10 && score>5){
     $("#end-message").text("Room for Improvement");
   }else if(score<=5){
-    $("#end-message").text("Study Up");
+    $("#end-message").text("Time to Study Up");
   }
-  $("#draggable").remove();
   $("#game-over").css("display","inline-block");
   if(score >= localStorage.highscore){
     localStorage.highscore = score;
-    $("#new-high-score").text("you got the high score!!");
-    $("#new-high-score").css("display","inline-block");
-    $("#new-high-score").fadeOut(3000);
+    $("#new-high-score").text("you got the high score!!").css("display", "inline-block").addClass("animated rollIn").fadeOut(3000);
   }
   $("#high-score").text("High Score: " + localStorage.highscore);
 }
@@ -329,8 +347,6 @@ function setName(){
     $("#image-name").text("Hypodermic Needle");
   }else if(randomImage[0] === "iphone.png"){
     $("#image-name").text("Broken iPhone");
-  }else if(randomImage[0] === "juicebox.png"){
-    $("#image-name").text("Juicebox");
   }else if(randomImage[0] === "laptop.png"){
     $("#image-name").text("Broken Laptop");
   }else if(randomImage[0] === "leaves.png"){
@@ -349,19 +365,17 @@ function setName(){
     $("#image-name").text("Old Couch");
   }else if(randomImage[0] === "tshirt.png"){
     $("#image-name").text("Old T-shirt");
+  }else if(randomImage[0] === "battery.png"){
+    $("#image-name").text("Rechargeable battery");
+  }else if(randomImage[0] === "toaster.png"){
+    $("#image-name").text("Broken toaster");
+  }else if(randomImage[0] === "coffee-cup.png"){
+    $("#image-name").text("Clean coffee cup");
+  }else if(randomImage[0] === "bottlecap.png"){
+    $("#image-name").text("Bottle cap");
+  }else if(randomImage[0] === "wineglass.png"){
+    $("#image-name").text("Broken wine glass");
   }
 }
-
-
-
-//if dropped item is in array of dropped area, score++; dissapear current image; create another image; 
-	//else if image is not in array, move image back to top 
-
-//appemd text to images
-//build in timer
-//fix score
-
-//remove image from allImages array once used by onLoad
-
 onLoad();
 

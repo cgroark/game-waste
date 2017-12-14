@@ -17,19 +17,18 @@
 			</div>
 		</div>	 
 	</div>
-
 	<div class="container">
 		<div class="sorting-div recycle-div" id="droppable1">
 			<h2>Recyclables</h2>
-			<img class="win-image-rec" src="img/celebrate.png">
+			<img class="win-image" id="win-image-rec" src="img/thumb.png">
 		</div>
 		<div class="sorting-div compost-div" id="droppable2">
 			<h2>Compostables</h2>
-			<img class="win-image-comp" src="img/celebrate.png">
+			<img class="win-image" id="win-image-comp" src="img/thumb.png">
 		</div>
 		<div class="sorting-div trash-div" id="droppable3">
 			<h2>Landfill</h2>
-			<img class="win-image-trash" src="img/celebrate.png">
+			<img class="win-image" id="win-image-trash"  src="img/trash-bag.png">
 		</div>
 		<div class="sorting-div other-div" id="droppable4">
 			<h2>Other</h2>
@@ -37,16 +36,12 @@
 	</div>
 	<div class="score-section">
 		<div>
-			<h3 id="score">Your Score:</h3>
+			<h3 id="score">Your Score: 0</h3>
 		</div>
-		<div>
-<!-- 			<h3 id="high-score">High Score:</h3>
- -->		</div>
 	</div>
 	<div id="timer">
 		<h2></h2>
 	</div>
-
 	<div id="game-over">
 		<h1 id="thank-you">Thanks For Cleaning Up</h1>
 		<h2 id="final-score"></h2>
@@ -59,16 +54,12 @@
 	<div id="new-high-score">
 		<h1></h1>
 	</div>
-
 	<div id="intro">
 		<h1 id="intro-text">Drag and drop items to the proper waste bin</h1>
 		<button id="start-button">Start Sorting!</button>
 		<h3 id="disclaimer">sorting based on Seattle Public Utilities waste management requirements</h3>
 		<h4>always consider re-use or donations before recycling</h4>
-
 	</div>
-
-	
 	<div class="other-items">
 		<div class="popup-div transfer-div" id="droppable5">
 			<h3>Transfer station drop-off</h3>
@@ -77,7 +68,7 @@
 			<h3>Threadcycle with local thrift store</h3>
 		</div>
 		<div class="popup-div ecycle-div" id="droppable7">
-			<h3>eWaste recycle: with eCycle</h3>
+			<h3>eWaste: recycle with eCycle</h3>
 		</div>
 		<div class="popup-div hhw-div" id="droppable8">
 			<h3>Household Hazardous Waste drop</h3>
@@ -86,8 +77,6 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="js/sortitems.js"></script>
-
 	<script src="js/script.js"></script>
 </body>
 </html>
