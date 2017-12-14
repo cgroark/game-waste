@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -19,21 +20,24 @@
 
 	<div class="container">
 		<div class="sorting-div recycle-div" id="droppable1">
-			<h1>Recyclables</h1>
+			<h2>Recyclables</h2>
+			<img class="win-image-rec" src="img/celebrate.png">
 		</div>
 		<div class="sorting-div compost-div" id="droppable2">
-			<h1>Compostables</h1>
+			<h2>Compostables</h2>
+			<img class="win-image-comp" src="img/celebrate.png">
 		</div>
 		<div class="sorting-div trash-div" id="droppable3">
-			<h1>Landfill</h1>
+			<h2>Landfill</h2>
+			<img class="win-image-trash" src="img/celebrate.png">
 		</div>
 		<div class="sorting-div other-div" id="droppable4">
-			<h1>Other</h1>
+			<h2>Other</h2>
 		</div>
 	</div>
 	<div class="score-section">
 		<div>
-			<h3 id="score"></h3>
+			<h3 id="score">Your Score:</h3>
 		</div>
 		<div>
 <!-- 			<h3 id="high-score">High Score:</h3>
@@ -57,24 +61,26 @@
 	</div>
 
 	<div id="intro">
-		<h1 id="intro-text">Drag and drop items to the proper waste bins</h1>
+		<h1 id="intro-text">Drag and drop items to the proper waste bin</h1>
 		<button id="start-button">Start Sorting!</button>
-		<h3 id="disclaimer">sorting based on Seattle Public Utilities waste management requirements</h1>
+		<h3 id="disclaimer">sorting based on Seattle Public Utilities waste management requirements</h3>
+		<h4>always consider re-use or donations before recycling</h4>
+
 	</div>
 
 	
 	<div class="other-items">
 		<div class="popup-div transfer-div" id="droppable5">
-			<h3>Take to transfer station</h3>
+			<h3>Transfer station drop-off</h3>
 		</div>
 		<div class="popup-div thread-div" id="droppable6">
-			<h3>Give to Threadcycle at local thrift store</h3>
+			<h3>Threadcycle with local thrift store</h3>
 		</div>
 		<div class="popup-div ecycle-div" id="droppable7">
-			<h3>Recycle responsibly via eCycle</h3>
+			<h3>eWaste recycle: with eCycle</h3>
 		</div>
 		<div class="popup-div hhw-div" id="droppable8">
-			<h3>Take to Household Hazardous Waste location</h3>
+			<h3>Household Hazardous Waste drop</h3>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>

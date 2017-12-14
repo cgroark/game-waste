@@ -18,8 +18,8 @@ body{
 }
 #start-button{
 	text-align: center;
-	height: 26px;
-	width: 300px;
+	height: 36px;
+	width: 350px;
 	margin-top: 30px;
 	font-size: 18px;
 }
@@ -31,7 +31,7 @@ body{
 	display: inline-block;
 	background-color: rgba(247, 187, 158, .9);
 	position: absolute;
-	margin-top: -650px;
+	margin-top: -750px;
 	margin-left: -400px;
 	height: 750px;
 	width: 800px;
@@ -41,7 +41,7 @@ body{
 	background-color: rgba(247, 187, 158, .9);
 	position: absolute;
 	padding-top: 100px;
-	margin-top: -650px;
+	margin-top: -750px;
 	margin-left: -400px;
 	height: 750px;
 	width: 800px;
@@ -68,26 +68,36 @@ body{
 	width: 140px;
 	margin-top: 30px;
 }
-#score, 
-#high-score{
+#score{
 	display: inline-block;
+	background-color:rgb(64, 149, 205);
+	color: white;
+	width: 400px;	
+	height: 40px;
+	margin-top: 20px;
 }
 #timer{
 	font-size: 36px;
+	height: 40px;
+	margin-bottom: 20px;
 }
 .container{
  	margin-left: auto;
 	margin-right: auto;
+	width: 1300px;
+	height: 200px;
 	margin-top: 20px;
  }
 .sorting-div{
 	display: inline-block;
 	padding-top: 130px;
 	background-size: 100% 100%;
-	width: 210px;
+	width: 220px;
 	height: 150px;
 	margin: 20px 20px;
 }
+
+
 .compost-div{
 	background-image: url(img/compost-bin.png);
 }
@@ -98,46 +108,71 @@ body{
 	background-image: url(img/bin.png);
 }
 .other-div{
-	background-image: url("img/alien-recycle.png");
+	background-image: url("img/recycleCirlce.png");
+}
+.win-image-rec{
+	display: none;
+	position: absolute;
+	margin-left: -80px;
+	margin-top: -200px;
+	height: 160px;
+	width: auto;
+}
+.win-image-comp{
+	display: none;
+	position: absolute;
+	margin-left: -80px;
+	margin-top: -200px;
+	height: 160px;
+	width: auto;
+}
+.win-image-trash{
+	display: none;
+	position: absolute;
+	margin-left: -80px;
+	margin-top: -200px;
+	height: 160px;
+	width: auto;
 }
 #draggable{
 	width: auto;
-	height: 160px;
+	height: 170px;
 	margin-bottom: 20px;
-	z-index: 1;
+	z-index: 4;
+
 }
 .popup-div{
 	display: inline-block;
-	padding-top: 130px;
+	color: black;
+	padding-top: 150px;
 	background-size: 100% 100%;
-	width: 150px;
-	height: 150px;
-	margin: 20px 20px;
+	width: 160px;
+	height: 160px;
+	margin: 30px 20px 0 20px;
 }
 .other-items{
 	position: absolute;
-	background-color: rgba(100, 100, 100, .7);
-	margin-top: -550px;
-	margin-left: -400px;
-	height: 300px;
-	width: 800px;
+	background-color: rgba(100, 100, 100, .95);
+	margin-top: -470px;
+	margin-left: -440px;
+	height: 320px;
+	width: 880px;
 	display: none;
 }
-
 .transfer-div{
-	background-image: url("img/alien-recycle.png");
+	background-image: url("img/recycle-green.png");
 
 }
 .thread-div{
-	background-image: url("img/alien-recycle.png");
+	background-image: url("img/recycle-green.png");
 
 }
 .ecycle-div{
-	background-image: url("img/alien-recycle.png");
+	background-image: url("img/recycle-green.png");
 
 }
 .hhw-div{
-	background-image: url("img/alien-recycle.png");
+	background-image: url("img/recycle-green.png");
 
 }
 

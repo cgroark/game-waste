@@ -8,18 +8,18 @@ var randomImage = [];
 var itemsRecycle = ["juicebox.png", "box.png", "beer.png", "bottle2.png", "can.png", "milk.png"];
 var itemsCompost = ["applecore.png", "banana.png", "cheese.png", "eggs.png", "fish.png", "leaves.png", "pizzabox.png"];
 var itemsTrash = ["foam.png", "spoon.png", "wrapper.png"];
-var itemsOther = ["bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
-var itemsTransfer = ["bike.png"];
+var itemsOther = ["tshirt.png", "couch.png","mattress.png", "bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
+var itemsTransfer = ["couch.png", "bike.png", "mattress.png"];
 var itemsHHW = ["hypodermic.png"];
-var itemsThread = [];
+var itemsThread = ["tshirt.png"];
 var itemsEwaste = ["iphone.png", "laptop.png", "tv.png"];
 var basePath = "img/";
-var allImages = ["applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png", "juicebox.png", "laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
+var allImages = ["tshirt.png", "couch.png",  "mattress.png", "applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png", "juicebox.png", "laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
 var highscore = $("#high-score");
 score = 0;
-time =57;
+time =25;
 
-if(localStorage.highscore == undefined){
+if(localStorage.highscore == 21){
 	localStorage.highscore= 0;
 }
 
@@ -31,7 +31,7 @@ function onLoad(){
 		time -= 1;
 		$("#timer").text("Time Remaining: " +time);
 		if(time<6){
-    $("#timer").css("color","red");
+    $("#timer").css("color","red").addClass("animated bounce infinite");
 		}
 		if(time<=0){
 			clearInterval(interval);
@@ -39,7 +39,7 @@ function onLoad(){
 		}	
 	}
 		interval = setInterval(tick, 1000);
-		setTimeout(setImage, 800);
+		setTimeout(setImage, 700);
 	})
 };
 function setImage(){
@@ -54,7 +54,6 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable1").droppable({
       drop: function(){
-        $(this).toggleClass("newClass");
         if(itemsRecycle.includes(randomImage[0])){
           console.log("in it");
           $("#draggable").remove();
@@ -62,8 +61,19 @@ $(function(){
           randomImage.splice(0,1);
           score++
           $("#score").text("Your Score: "+score);
+          // $(".win-image-rec").css({
+          //   opacity: "0",
+          //   height: "160px",
+          //   width: "160px"
+          //   })
+          // $(".win-image-rec").animate({
+          //   opacity: 0.95,
+          //   height: "+50",
+          //   width: "+50"
+          // }, 300, function() {
+          // });
+          // $(".win-image-rec").fadeOut("slow");
           newImage();  
-          setName();
         }else{
           console.log("not");
           $("#draggable").remove();
@@ -79,7 +89,6 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable2").droppable({
       drop: function(){
-      	$(this).toggleClass("newClass");
       	if(itemsCompost.includes(randomImage[0])){
       		console.log("in it");
       		$("#draggable").remove();
@@ -104,7 +113,6 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable3").droppable({
       drop: function(){
-      	$(this).toggleClass("newClass");
       	if(itemsTrash.includes(randomImage[0])){
       		console.log("in it");
       		$("#draggable").remove();
@@ -129,16 +137,13 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable4").droppable({
       drop: function(){
-      	$(this).toggleClass("newClass");
       	if(itemsOther.includes(randomImage[0])){
       		console.log("in it");
+          $("#draggable").remove();
+          $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+          $("#draggable").draggable();
+          $(".sorting-div").css("display", "none");
           otherSort();
-      		// $("#draggable").remove();
-        //   $("#image-name").text("");
-      		// randomImage.splice(0,1);
-      		// score++
-      		// $("#score").text("Your Score: "+score);
-      		// newImage();
       	}else{
       		console.log("not");
       		$("#draggable").remove();
@@ -162,7 +167,6 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable5").droppable({
       drop: function(){
-        $(this).toggleClass("newClass");
         if(itemsTransfer.includes(randomImage[0])){
           console.log("in it");
           $("#draggable").remove();
@@ -172,6 +176,7 @@ $(function(){
           $("#score").text("Your Score: "+score);
           newImage();
           $(".other-items").css("display", "none");
+          $(".sorting-div").css("display", "inline-block");
         }else{
           console.log("not");
           $("#draggable").remove();
@@ -187,7 +192,6 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable6").droppable({
       drop: function(){
-        $(this).toggleClass("newClass");
         if(itemsThread.includes(randomImage[0])){
           console.log("in it");
           $("#draggable").remove();
@@ -197,6 +201,7 @@ $(function(){
           $("#score").text("Your Score: "+score);
           newImage();
           $(".other-items").css("display", "none");
+          $(".sorting-div").css("display", "inline-block");
         }else{
           console.log("not");
           $("#draggable").remove();
@@ -212,8 +217,7 @@ $(function(){
     $("#draggable").draggable();
     $("#droppable7").droppable({
       drop: function(){
-        $(this).toggleClass("newClass");
-        if(itemsEwaste.includes(randomImage[0])){
+          if(itemsEwaste.includes(randomImage[0])){
           console.log("in it");
           $("#draggable").remove();
           $("#image-name").text("");
@@ -222,6 +226,7 @@ $(function(){
           $("#score").text("Your Score: "+score);
           newImage();
           $(".other-items").css("display", "none");
+          $(".sorting-div").css("display", "inline-block");
         }else{
           console.log("not");
           $("#draggable").remove();
@@ -247,6 +252,7 @@ $(function(){
           $("#score").text("Your Score: "+score);
           newImage();
           $(".other-items").css("display", "none");
+          $(".sorting-div").css("display", "inline-block");
         }else{
           console.log("not");
           $("#draggable").remove();
@@ -271,6 +277,8 @@ function newImage(){
 }
 function gameOver(){
   console.log("no time");
+  $(".other-items").css("display", "none");
+
   $("#final-score").text("Your Score: "+score);
   if(score>10){
     $("#end-message").text("You're a Master Sorter");
@@ -294,7 +302,7 @@ function setName(){
   if(randomImage[0] === "bike.png"){
     $("#image-name").text("Bicycle");
   }else if(randomImage[0] === "spoon.png"){
-    $("#image-name").text("Spoon");
+    $("#image-name").text("Plastic spoon");
   }else if(randomImage[0] === "fish.png"){
     $("#image-name").text("Rotten Fish");
   }else if(randomImage[0] === "foam.png"){
@@ -335,6 +343,12 @@ function setName(){
     $("#image-name").text("Broken TV");
   }else if(randomImage[0] === "wrapper.png"){
     $("#image-name").text("Candy Wrapper");
+  }else if(randomImage[0] === "mattress.png"){
+    $("#image-name").text("Old Mattress");
+  }else if(randomImage[0] === "couch.png"){
+    $("#image-name").text("Old Couch");
+  }else if(randomImage[0] === "tshirt.png"){
+    $("#image-name").text("Old T-shirt");
   }
 }
 
