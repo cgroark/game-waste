@@ -1,27 +1,28 @@
 var sortingImage = $("#draggable");
 var sortingTitle = $("#item-title");
 var randomImage = [];
+var allImages = ["coffee.png", "gascan.png", "coat.png", "wineglass.png", "bottlecap.png", "coffee-cup.png","toaster.png", "battery.png", "tshirt.png", "couch.png", "applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png","laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"]
 var itemsRecycle = ["coffee-cup.png", "box.png", "beer.png", "bottle2.png", "can.png", "milk.png"];
-var itemsCompost = ["applecore.png", "banana.png", "cheese.png", "eggs.png", "fish.png", "leaves.png", "pizzabox.png"];
+var itemsCompost = ["coffee.png", "applecore.png", "banana.png", "cheese.png", "eggs.png", "fish.png", "leaves.png", "pizzabox.png"];
 var itemsTrash = ["wineglass.png", "bottlecap.png", "toaster.png", "foam.png", "spoon.png", "wrapper.png"];
-var itemsOther = ["battery.png", "tshirt.png", "couch.png","mattress.png", "bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
-var itemsTransfer = ["couch.png", "bike.png", "mattress.png"];
-var itemsHHW = ["battery.png", "hypodermic.png"];
-var itemsThread = ["tshirt.png"];
+var itemsOther = ["gascan.png", "coat.png", "battery.png", "tshirt.png", "couch.png", "bike.png", "hypodermic.png", "iphone.png", "laptop.png", "tv.png"]
+var itemsTransfer = ["couch.png", "bike.png"];
+var itemsHHW = ["gascan.png", "battery.png", "hypodermic.png"];
+var itemsThread = ["coat.png", "tshirt.png"];
 var itemsEwaste = ["iphone.png", "laptop.png", "tv.png"];
 var basePath = "img/";
-var allImages = ["wineglass.png", "bottlecap.png", "coffee-cup.png","toaster.png", "battery.png", "tshirt.png", "couch.png",  "mattress.png", "applecore.png", "foam.png", "banana.png", "beer.png", "bike.png", "box.png", "bottle2.png", "can.png", "cheese.png", "eggs.png", "fish.png", "hypodermic.png", "iphone.png","laptop.png", "leaves.png", "milk.png", "pizzabox.png", "spoon.png", "tv.png", "wrapper.png"];
 var highscore = $("#high-score");
+var height = document.body.clientHeight;
+var width = document.body.clientWidth;
 score = 0;
-time =70;
+time =35;
 
-if(localStorage.highscore == 4){
+if(localStorage.highscore == undefined){
 	localStorage.highscore= 0;
 }
 function onLoad(){
   $("#intro").addClass("animated bounceInDown");
 	$("#start-button").on("click", function(){
-	console.log("button clicked");
   $("#intro").addClass("animated bounceOutUp");
 	var tick = function(){
 		time -= 1;
@@ -42,264 +43,250 @@ function setImage(){
 	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
 	randomImage.push(randImg);
 	var imageSrc = basePath+randImg;
-  sortingImage.addClass("animated fadeInDown");
+  $("#main-image-div").addClass("animated fadeInDown");
 	sortingImage.attr("src", imageSrc);
   allImages.splice(allImages.indexOf(randImg), 1);
+  $("#draggable").draggable({
+    containment: [0, 0, width, height-300]
+  });
+  $(".drop-text").css("display", "inline-block").addClass("animated pulse").fadeOut(3500);
   setName();
 }
-
-function celebrateRec(){
-  console.log("celebrate");
-          $("#win-image-rec").css({
-            opacity: 1.0,
-            height: "-60%"
-          })
-          $("#win-image-rec").animate({
-            opacity: 0,
-            height: "+60%",
-          }, 2000, function(){
-          });
+function resetMainSort(){
+  $(".other-items").fadeOut(150);
+  $(".sorting-div").fadeIn(1000);
+  setTimeout(newImage, 400);  
 }
-function celebrateComp(){
-  console.log("celebrate");
-          $("#win-image-comp").css({
-            opacity: 1.0,
-            height: "-60%"
-          })
-          $("#win-image-comp").animate({
-            opacity: 0,
-            height: "+60%",
-          }, 2000, function(){
-          });
+function newImage(){
+  var randImg = allImages[Math.floor(Math.random() * allImages.length)];
+  randomImage.push(randImg);
+  var imageSrc = basePath+randImg;
+  $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+  $("#draggable").draggable({
+              containment: [0, 0, width, height-300]
+          });          
+  setName();
+  allImages.splice(allImages.indexOf(randImg),1);
 }
-function celebrateTrash(){
-  console.log("celebrate");
-          $("#win-image-trash").css({
-            opacity: 1.0,
-            height: "-60%"
-          })
-          $("#win-image-trash").animate({
-            opacity: 0,
-            height: "+60%",
-          }, 2000, function(){
-          });
+function correct(){
+  $("#draggable").remove();
+  $("#image-name").text("");
+  randomImage.splice(0,1);
+  score++
+  $("#score").text("Your Score: "+score);
+  setTimeout(newImage, 100);  
 }
-
-// .css("display", "none").height(160).width(auto);
+function incorrect(){
+  $("#draggable").remove();
+  $("#main-image-div").append($("<img>", {id: "draggable", src: basePath+randomImage[0]}));
+  $("#draggable").draggable({
+  containment: [0, 0, width, height-300]
+  });          
+  setName();
+}
 $(function(){
-    $("#draggable").draggable();
     $("#droppable1").droppable({
       drop: function(){
         if(itemsRecycle.includes(randomImage[0])){
-          console.log("in it");
-          $("#draggable").remove();
-          $("#draggable").remove();
-          $("#image-name").text("");
-          randomImage.splice(0,1);
-          score++
-          $("#score").text("Your Score: "+score);
+          correct();
           celebrateRec();
-          newImage();  
         }else{
-          console.log("not");
-          $("#draggable").remove();
+          incorrect();
           $(".recycle-div").effect("shake",{times:4},300);
-          $("#main-image-div").append($("<img>", {id: "draggable", src: basePath+randomImage[0]}));
-          $("#draggable").draggable();
-          setName();
         }
       }
     });
 });
 $(function(){
-    $("#draggable").draggable();
     $("#droppable2").droppable({
       drop: function(){
       	if(itemsCompost.includes(randomImage[0])){
-      		console.log("in it");
-      		$("#draggable").remove();
-          $("#image-name").text("");
-      		randomImage.splice(0,1);
-      		score++
-      		$("#score").text("Your Score: "+score);
+      		correct();
       		celebrateComp();
-          newImage();
       	}else{
-      		console.log("not");
-      		$("#draggable").remove();
+          incorrect();
       		$(".compost-div").effect("shake",{times:4},300);
-      		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-      		$("#draggable").draggable();
-          setName();
       	}
       }
     });
 });
 $(function(){
-    $("#draggable").draggable();
     $("#droppable3").droppable({
       drop: function(){
       	if(itemsTrash.includes(randomImage[0])){
-      		console.log("in it");
-      		$("#draggable").remove();
-          $("#image-name").text("");
-      		randomImage.splice(0,1);
-      		score++
-      		$("#score").text("Your Score: "+score);
-      		newImage();
+          correct();
           celebrateTrash();
       	}else{
-      		console.log("not");
-      		$("#draggable").remove();
+          incorrect();
       		$(".trash-div").effect("shake",{times:4},300);
-      		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-      		$("#draggable").draggable();
-          setName();
       	}
       }
     });
 });
 $(function(){
-    $("#draggable").draggable();
     $("#droppable4").droppable({
       drop: function(){
       	if(itemsOther.includes(randomImage[0])){
-      		console.log("in it");
-          $("#draggable").remove();
-          $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-          $("#draggable").draggable();
-          $(".sorting-div").css("display", "none");
           otherSort();
       	}else{
-      		console.log("not");
-      		$("#draggable").remove();
+          incorrect();
       		$(".other-div").effect("shake",{times:4},300);
-      		$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-      		$("#draggable").draggable();
-          setName();
       	}
       }
     });
 });
 function otherSort(){
-  console.log("other");
+  $("#draggable").remove();
+  $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
+  $("#draggable").draggable();
+  $(".sorting-div").css("display", "none");
   $(".other-items").addClass("animated fadeInLeft");
   $(".other-items").css("display", "inline-block");
+  $("#draggable").draggable({
+              containment: [0, 0, width, height-300]
+          });
 }
-$(function(){
-    $("#draggable").draggable();
-    $("#droppable5").droppable({
-      drop: function(){
-        if(itemsTransfer.includes(randomImage[0])){
-          console.log("in it");
+function otherCorrect(){
           $("#draggable").remove();
           $("#image-name").text("");
           randomImage.splice(0,1);
           score++
           $("#score").text("Your Score: "+score);
-          newImage();
-          $(".other-items").css("display", "none");
-          $(".sorting-div").css("display", "inline-block");
+          setTimeout(resetMainSort, 600);
+}
+$(function(){
+    $("#droppable5").droppable({
+      drop: function(){
+        if(itemsTransfer.includes(randomImage[0])){
+          otherCorrect();
+          celebrateTransfer();
         }else{
-          console.log("not");
-          $("#draggable").remove();
+          incorrect();
           $(".transfer-div").effect("shake",{times:4},300);
-          $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-          $("#draggable").draggable();
-          setName();
         }
       }
     });
 });
 $(function(){
-    $("#draggable").draggable();
     $("#droppable6").droppable({
       drop: function(){
         if(itemsThread.includes(randomImage[0])){
-          console.log("in it");
-          $("#draggable").remove();
-          $("#image-name").text("");
-          randomImage.splice(0,1);
-          score++;
-          $("#score").text("Your Score: "+score);
-          newImage();
-          $(".other-items").css("display", "none");
-          $(".sorting-div").css("display", "inline-block");
+          otherCorrect();
+          celebrateThread();
         }else{
-          console.log("not");
-          $("#draggable").remove();
+          incorrect();
           $(".thread-div").effect("shake",{times:4},300);
-          $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-          $("#draggable").draggable();
-          setName();
         }
       }
     });
 });
 $(function(){
-    $("#draggable").draggable();
     $("#droppable7").droppable({
       drop: function(){
           if(itemsEwaste.includes(randomImage[0])){
-          console.log("in it");
-          $("#draggable").remove();
-          $("#image-name").text("");
-          randomImage.splice(0,1);
-          score++;
-          $("#score").text("Your Score: "+score);
-          newImage();
-          $(".other-items").css("display", "none");
-          $(".sorting-div").css("display", "inline-block");
+          otherCorrect();
+          celebrateEwaste();
         }else{
-          console.log("not");
-          $("#draggable").remove();
+          incorrect();
           $(".ecycle-div").effect("shake",{times:4},300);
-          $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-          $("#draggable").draggable();
-          setName();
         }
       }
     });
 });
 $(function(){
-    $("#draggable").draggable();
     $("#droppable8").droppable({
       drop: function(){
-        $(this).toggleClass("newClass");
         if(itemsHHW.includes(randomImage[0])){
-          console.log("in it");
-          $("#draggable").remove();
-          $("#image-name").text("");
-          randomImage.splice(0,1);
-          score++;
-          $("#score").text("Your Score: "+score);
-          newImage();
-          $(".other-items").css("display", "none");
-          $(".sorting-div").css("display", "inline-block");
+          otherCorrect();
+          celebrateHaz();
         }else{
-          console.log("not");
-          $("#draggable").remove();
+          incorrect();
           $(".hhw-div").effect("shake",{times:4},300);
-          $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-          $("#draggable").draggable();
-          setName();
         }
       }
     });
 });
-function newImage(){
-	var randImg = allImages[Math.floor(Math.random() * allImages.length)];
-	randomImage.push(randImg);
-	var imageSrc = basePath+randImg;
-	$("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-	$("#draggable").draggable();
-  setName()
-  allImages.splice(allImages.indexOf(randImg),1);
+function celebrateRec(){
+          $("#win-image-rec").css({
+            opacity: 1.0,
+            height: "-120%"
+          })
+          $("#win-image-rec").animate({
+            opacity: 0,
+            height: "+120%",
+          }, 1000, function(){
+          });
+}
+function celebrateComp(){
+          $("#win-image-comp").css({
+            opacity: 1.0,
+            height: "-120%"
+          })
+          $("#win-image-comp").animate({
+            opacity: 0,
+            height: "+120%",
+          }, 1000, function(){
+          });
+}
+function celebrateTrash(){
+          $("#win-image-trash").css({
+            opacity: 1.0,
+            height: "-120%"
+          })
+          $("#win-image-trash").animate({
+            opacity: 0,
+            height: "+120%",
+          }, 1000, function(){
+          });
+}
+function celebrateTransfer(){
+         $("#win-image-transfer").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-transfer").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 1000, function(){
+          });
+}
+function celebrateThread(){
+          $("#win-image-thread").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-thread").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 1000, function(){
+          });
+}
+function celebrateEwaste(){
+          $("#win-image-ewaste").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-ewaste").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 1000, function(){
+          });
+}
+function celebrateHaz(){
+          $("#win-image-haz").css({
+            opacity: 1.0,
+            height: "-60%"
+          })
+          $("#win-image-haz").animate({
+            opacity: 0,
+            height: "+60%",
+          }, 1000, function(){
+          });
 }
 function gameOver(){
-  $(".other-items").css("display", "none");
   $("#timer").remove();
   $("#main-image-div").remove();
+  $(".other-items").remove();
   $("#final-score").text("Your Score: "+score);
   if(score>10){
     $("#end-message").text("You're a Master Sorter");
@@ -309,14 +296,14 @@ function gameOver(){
     $("#end-message").text("Time to Study Up");
   }
   $("#game-over").css("display","inline-block");
+  $("#game-over").addClass("animated bounceInDown");
   if(score >= localStorage.highscore){
     localStorage.highscore = score;
-    $("#new-high-score").text("you got the high score!!").css("display", "inline-block").addClass("animated rollIn").fadeOut(3000);
+  $("#new-high-score").text("you got the high score!!").css("display", "inline-block").addClass("animated rollIn").fadeOut(3000);
   }
   $("#high-score").text("High Score: " + localStorage.highscore);
 }
 function setName(){
-  console.log('name');
   if(randomImage[0] === "bike.png"){
     $("#image-name").text("Bicycle");
   }else if(randomImage[0] === "spoon.png"){
@@ -338,7 +325,7 @@ function setName(){
   }else if(randomImage[0] === "cheese.png"){
     $("#image-name").text("Moldy Cheese");
   }else if(randomImage[0] === "eggs.png"){
-    $("#image-name").text("Rotten Eggs");
+    $("#image-name").text("Eggshells");
   }else if(randomImage[0] === "applecore.png"){
     $("#image-name").text("Apple-core");
   }else if(randomImage[0] === "box.png"){
@@ -359,8 +346,6 @@ function setName(){
     $("#image-name").text("Broken TV");
   }else if(randomImage[0] === "wrapper.png"){
     $("#image-name").text("Candy Wrapper");
-  }else if(randomImage[0] === "mattress.png"){
-    $("#image-name").text("Old Mattress");
   }else if(randomImage[0] === "couch.png"){
     $("#image-name").text("Old Couch");
   }else if(randomImage[0] === "tshirt.png"){
@@ -375,6 +360,12 @@ function setName(){
     $("#image-name").text("Bottle cap");
   }else if(randomImage[0] === "wineglass.png"){
     $("#image-name").text("Broken wine glass");
+  }else if(randomImage[0] === "coat.png"){
+    $("#image-name").text("Old coat");
+  }else if(randomImage[0] === "gascan.png"){
+    $("#image-name").text("Can of gas");
+  }else if(randomImage[0] === "coffee.png"){
+    $("#image-name").text("Used coffee grounds");
   }
 }
 onLoad();
