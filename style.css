@@ -4,64 +4,14 @@ body{
 	background-image: url("img/background2.jpg");
 	background-size: cover;
 }
+/*main home screen
+*/
 #title{
 	font-size: 64px;
 	margin: 26px 0 24px 0;
 }
 .container-top{
 	height: 190px;
-}
-#intro-text{
-	font-size: 64px;
-}
-#final-score{
-	color: white;
-	background-color:rgb(64, 149, 205);
-	width: 400px;	
-	display: inline-block;
-	height: 60px;
-	font-size: 56px;
-	border-radius: 12px;
-
-}
-#end-message{
-	color: rgb(33, 87, 64);
-	font-size: 56px;
-}
-#intro{
-	padding-top: 230px;
-	display: inline-block;
-	background-color: rgba(247, 187, 158, .9);
-	position: absolute;
-	margin-top: -750px;
-	margin-left: -400px;
-	height: 750px;
-	width: 800px;
-}
-#game-over{
-	display: none;
-	background-color: rgba(247, 187, 158, .9);
-	position: absolute;
-	padding-top: 100px;
-	margin-top: -600px;
-	margin-left: -400px;
-	height: 750px;
-	width: 800px;
-}
-#new-high-score{
-	display: none;
-	position: absolute;
-	padding-top: 100px;
-	margin-top: -550px;
-	margin-left: -400px;
-	height: 200px;
-	width: 800px;
-	font-size: 124px;
-	color: rgb(130, 189, 119);
-}
-#thank-you{
-	font-size: 54px;
-	letter-spacing: 3px;
 }
 .container{
  	margin: 20px auto auto 0;
@@ -98,13 +48,101 @@ body{
 .drop-text{
  	display: none;
  	position: absolute;
- 	font-size: 92px;
+ 	font-size: 102px;
  	letter-spacing: 30px;
  	color: pink;
  	top: 50%;
  	left: 6%;
  	z-index: 1;
  }
+ #score{
+	display: inline-block;
+	background-color:rgb(64, 149, 205);
+	color: white;
+	width: 400px;	
+	height: 40px;
+	font-size: 36px;
+	margin-top: 20px;
+	border-radius: 10px;
+}
+#timer{
+	font-size: 36px;
+	height: 40px;
+	margin-bottom: 20px;
+}
+/*initial intro and directions screen
+*/
+#intro{
+	padding-top: 200px;
+	display: inline-block;
+	background-color: rgba(247, 187, 158, .9);
+	position: absolute;
+	margin-top: -750px;
+	margin-left: -400px;
+	height: 750px;
+	width: 800px;
+}
+#main-title{
+	font-family: 'Bungee', cursive;
+	font-size: 96px;
+}
+#intro-text{
+	font-size: 64px;
+}
+#start-button{
+	text-align: center;
+	height: 36px;
+	width: 350px;
+	margin-top: 30px;
+	font-size: 18px;
+	border-radius: 8px;
+}
+/*score and end message screen
+*/
+#final-score{
+	color: white;
+	background-color:rgb(64, 149, 205);
+	width: 400px;	
+	display: inline-block;
+	height: 60px;
+	font-size: 56px;
+	border-radius: 12px;
+}
+#end-message{
+	color: rgb(33, 87, 64);
+	font-size: 56px;
+}
+#game-over{
+	display: none;
+	background-color: rgba(247, 187, 158, .9);
+	position: absolute;
+	padding-top: 100px;
+	margin-top: -600px;
+	margin-left: -400px;
+	height: 750px;
+	width: 800px;
+}
+#new-high-score{
+	display: none;
+	position: absolute;
+	padding-top: 100px;
+	margin-top: -550px;
+	margin-left: -400px;
+	height: 200px;
+	width: 800px;
+	font-size: 124px;
+	color: rgb(130, 189, 119);
+}
+#reset{
+	text-align: center;
+	height: 36px;
+	width: 350px;
+	margin-top: 30px;
+	font-size: 18px;
+	border-radius: 8px;
+}
+/*win images that pop up
+*/
 .win-image{
 	display: none;
 	position: absolute;
@@ -121,7 +159,11 @@ body{
 	height: 160px;
 	width: auto;
 }
+
+/*"other" pop up items
+*/
 .popup-div{
+	position: relative;
 	display: inline-block;
 	color: black;
 	padding-top: 150px;
@@ -129,16 +171,14 @@ body{
 	width: 160px;
 	height: 160px;
 	margin: 30px 20px 0 20px;
-	z-index: 0;
 }
 .other-items{
 	position: absolute;
-	margin-top: -400px;
+	margin-top: -390px;
 	margin-left: -440px;
 	height: 320px;
 	width: 880px;
 	display: none;
-	z-index: 0;
 }
 .transfer-div{
 	background-image: url("img/transfer.png");
@@ -156,36 +196,6 @@ body{
 .hhw-div{
 	background-image: url("img/hazard.png");
 }
-#score{
-	display: inline-block;
-	background-color:rgb(64, 149, 205);
-	color: white;
-	width: 400px;	
-	height: 40px;
-	font-size: 36px;
-	margin-top: 20px;
-	border-radius: 10px;
 
-}
-#timer{
-	font-size: 36px;
-	height: 40px;
-	margin-bottom: 20px;
-}
-#start-button{
-	text-align: center;
-	height: 36px;
-	width: 350px;
-	margin-top: 30px;
-	font-size: 18px;
-	border-radius: 8px;
-}
-#reset{
-	text-align: center;
-	height: 36px;
-	width: 350px;
-	margin-top: 30px;
-	font-size: 18px;
-	border-radius: 8px;
-}
+
 
