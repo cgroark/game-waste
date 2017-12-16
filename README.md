@@ -33,6 +33,7 @@ Issues
     bugs with images getting stuck and appearing after game was over
     
 Next Steps
+
     build for responsiveness
     additional items and styling
 
