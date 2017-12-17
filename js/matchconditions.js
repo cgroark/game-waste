@@ -50,20 +50,17 @@ $(function(){
       }
     });
 });
-
 //pop-up other sort options when "other sort" is a match
 function otherSort(){
   $("#draggable").remove();
   $("#main-image-div").append($("<img>", {id:"draggable", src: basePath+randomImage[0]}));
-  $("#draggable").draggable();
   $(".sorting-div").css("display", "none");
-  $(".other-items").addClass("animated fadeInLeft");
-  $(".other-items").css("display", "inline-block");
+  $(".popup-div").addClass("animated fadeInLeft");
+  $(".popup-div").css("display", "inline-block");
   $("#draggable").draggable({
     containment: [0, 0, width-200, height-300]
   });
 }
-
 //run these when match is found within "other" options
 function otherCorrect(){
   $("#draggable").remove();
@@ -73,7 +70,6 @@ function otherCorrect(){
   $("#score").text("Your Score: "+score);
   setTimeout(resetMainSort, 600);
 }
-
 //drap and drop functions for four "other" bin options
 $(function(){
     $("#droppable5").droppable({
@@ -127,7 +123,6 @@ $(function(){
       }
     });
 });
-
 //run these if there is a match with trash item and bin for three main bin options
 function correct(){
   $("#draggable").remove();
@@ -137,7 +132,6 @@ function correct(){
   $("#score").text("Your Score: "+score);
   setTimeout(newImage, 100);  
 }
-
 //run this if item does not match the selected bin for all eight options
 function incorrect(){
   $("#draggable").remove();
@@ -147,7 +141,6 @@ function incorrect(){
   });          
   setName();
 }
-
 //image appears when match is correct for each of 7 bin options
 function celebrateRec(){
   $("#win-image-rec").css({

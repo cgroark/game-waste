@@ -73,7 +73,7 @@ function newImage(){
 }
 //reset the screen with main sorting after "other" sort screen pops up
 function resetMainSort(){
-  $(".other-items").fadeOut(150);
+  $(".popup-div").fadeOut(150);
   $(".sorting-div").fadeIn(1000);
   setTimeout(newImage, 400);  
 }
@@ -98,6 +98,5 @@ function gameOver(){
   }
   $("#high-score").text("High Score: " + localStorage.highscore);
 }
-
 onLoad();
 

@@ -17,8 +17,7 @@ body{
  	margin: 20px auto auto 0;
 	width: 1300px;
 	height: 200px;
-	z-index: 0;
- }
+}
  #draggable{
 	width: auto;
 	height: 170px;
@@ -31,7 +30,7 @@ body{
 	background-size: 100% 100%;
 	width: 220px;
 	height: 150px;
-	margin: 20px 20px;
+	margin: 20px;
 }
 .compost-div{
 	background-image: url(img/compost-bin.png);
@@ -62,7 +61,7 @@ body{
 	width: 400px;	
 	height: 40px;
 	font-size: 36px;
-	margin-top: 20px;
+	margin-top: -40px;
 	border-radius: 10px;
 }
 #timer{
@@ -77,9 +76,9 @@ body{
 	display: inline-block;
 	background-color: rgba(247, 187, 158, .9);
 	position: absolute;
-	margin-top: -750px;
+	margin-top: -810px;
 	margin-left: -400px;
-	height: 750px;
+	height: 850px;
 	width: 800px;
 }
 #main-title{
@@ -159,26 +158,24 @@ body{
 	height: 160px;
 	width: auto;
 }
-
 /*"other" pop up items
 */
 .popup-div{
 	position: relative;
-	display: inline-block;
 	color: black;
 	padding-top: 150px;
 	background-size: 100% 100%;
 	width: 160px;
 	height: 160px;
-	margin: 30px 20px 0 20px;
+	margin: 30px 30px 0 30px;
+	display: none;
+	z-index: 0;
 }
 .other-items{
-	position: absolute;
-	margin-top: -390px;
-	margin-left: -440px;
+	margin-top: -250px;
+	margin-left: 135px;
 	height: 320px;
-	width: 880px;
-	display: none;
+	width: 1000px;
 }
 .transfer-div{
 	background-image: url("img/transfer.png");
