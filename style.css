@@ -194,5 +194,13 @@ body{
 	background-image: url("img/hazard.png");
 }
 
+.copyright {
+	font-family: 'Bungee', cursive;
+	float: left;
+}
 
+.message {
+	font-family: 'Bungee', cursive;
+	float: right;
+}
 

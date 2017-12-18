@@ -15,7 +15,7 @@ var highscore = $("#high-score");
 var height = document.body.clientHeight;
 var width = document.body.clientWidth;
 score = 0;
-time =30;
+time =35;
 
 if(localStorage.highscore == undefined){
 	localStorage.highscore= 0;
